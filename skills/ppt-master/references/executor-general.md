@@ -31,15 +31,37 @@ The General style is not confined to fixed templates; layouts can be freely chos
 - **Visual weight balance**: Dark/large-area elements are "heavy", light/small elements are "light" — balance left-right/top-bottom
 - **Repetition and variation**: Maintain layout consistency within a chapter; vary between chapters to maintain freshness
 
-### 3. Decorative Element Usage
+### 3. Icon & Decorative Element Usage
+
+#### Icon-Integrated Layout Patterns
+
+| Pattern | Structure | When to Use |
+|---------|-----------|-------------|
+| **Icon-topped card** | 48px icon centered above card title, 12px gap to title text | Feature showcase, pillar comparison (3-4 cards) |
+| **Icon-prefixed row** | 32px icon left-aligned, label right of icon (8px gap), description below | Comparison tables, checklist rows, benefit lists |
+| **Watermark number + icon** | Large semi-transparent number (120px, opacity 0.06) as background, 48px icon overlaid at top-right of number | Numbered steps, ranked lists, process flows |
+
+#### Structural Decorative Elements
 
 | Element | Usage | Notes |
 |---------|-------|-------|
 | Gradient blocks | Background zones, title backing | Use `<linearGradient>` / `<radialGradient>`, limit to 2-3 colors |
 | Rounded rectangle cards | Content containers, feature modules | `rx="12"` with light shadow (simulate with lighter rect) |
-| Icon accents | List item prefixes, feature markers | Use `data-icon` placeholders, size 32-48px |
+| Icon accents | List item prefixes, feature markers | 32-48px icons from built-in library or AI-generated images |
 | Numbered circles | Step flows, ranked lists | `<circle>` + centered `<text>`, theme color fill |
 | Divider lines | Content separation | `<line>` or `<rect height="2">`, opacity 0.2-0.3 |
+| Color-blocked header bar | Section identifier at page top | `<rect>` primary color, h=6-8px, title text beside or below |
+| Takeaway / callout banner | Key insight highlighted at page bottom | Rounded rect with accent fill, white text, 1 sentence max |
+| Comparison row stripes | Alternating row backgrounds in tables | Alternate `#FFFFFF` and light gray (opacity 0.05-0.08) |
+
+#### Anti-patterns (Avoid)
+
+| Anti-pattern | Why | Fix |
+|--------------|-----|-----|
+| Multi-color icons on one page | Breaks visual restraint, looks like a toy | Single color per icon (§4.3 in executor-base) |
+| Icon without adjacent label | Ambiguous meaning — icon alone is a guessing game | Always pair icon with text label |
+| Decorative icon unrelated to content | Visual noise, zero information value | Every icon must map to a concept |
+| Oversized icons competing with titles | Hierarchy inversion — icon outweighs text | Primary icons max 48px; titles 36-48px |
 
 ---
 

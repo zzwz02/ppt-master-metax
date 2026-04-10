@@ -110,6 +110,17 @@ Logically related elements **MUST** be wrapped in `<g>` tags. This produces Powe
 
 **Naming convention**: Use descriptive `id` attributes on `<g>` tags (e.g., `card-1`, `step-discover`, `header`, `footer`). IDs are optional but recommended for readability.
 
+### Icon Spacing Rules
+
+| Rule | Value | Notes |
+|------|-------|-------|
+| Icon–label horizontal gap | 8–12px | Icon left, label right; smaller gap for tertiary (24px) icons |
+| Icon–title vertical gap (card header) | 10–14px | Icon above title inside a card |
+| Icon vertical alignment (inline) | Center-align with first line of adjacent text | Use `y` = text baseline − icon_height/2 + 2px |
+| Adjacent icon-text pairs (row of cards) | Equal spacing between all pairs | Measure card-center to card-center, not edge-to-edge |
+| Icon padding inside card | Same as card inner padding (typically 20–32px from card edge) | Icon should not touch card border |
+| Minimum icon-to-icon distance | ≥ 1.5× icon width | Prevents icons from visually merging |
+
 ---
 
 ## 5. Post-processing Pipeline (3 Steps)

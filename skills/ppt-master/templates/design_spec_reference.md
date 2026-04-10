@@ -150,16 +150,31 @@
 
 ## VI. Icon Usage Specification
 
-### Source
+### Icon Design Intent
 
-- **Built-in icon library**: `templates/icons/` (640+ icons)
-- **Usage method**: Placeholder format `{{icon:category/icon-name}}`
+| Property | Value |
+| -------- | ----- |
+| **Design approach** | [Icon-as-Label / Decorative / Illustrative] |
+| **Source** | [B: AI-generated / C: Built-in library / Mixed B+C] |
+| **Built-in library** (if C) | [`chunk` / `tabler-filled` / `tabler-outline`] |
+| **Style anchor** (if B) | [Fixed style clause for all AI-generated icons, e.g., "flat vector icon, monochrome dark blue (#1E3A5F), single-weight line-art, white background, minimal detail"] |
+| **Default icon color** | [HEX value, typically body text color] |
+| **Emphasis icon color** | [HEX value, typically primary theme color] |
+
+### Icon Sizing Tiers
+
+| Tier | Size | Use Case |
+| ---- | ---- | -------- |
+| Primary | 48×48 px | Card header, pillar marker |
+| Secondary | 32×32 px | List item prefix, row label |
+| Tertiary | 24×24 px | Inline accent, metadata |
 
 ### Recommended Icon List (fill as needed)
 
-| Purpose | Icon Path | Page |
-| ------- | --------- | ---- |
-| [example] | `{{icon:interface/check-circle}}` | Slide XX |
+| Purpose | Icon Path / Filename | Size | Type | Page | Generation Description |
+| ------- | -------------------- | ---- | ---- | ---- | --------------------- |
+| [example] | `images/icon_brain.png` | 48×48 | AI-generated | Slide XX | Brain with neural network synapses, flat vector, monochrome |
+| [example] | `chunk/cog` | 32×32 | Built-in | Slide XX | — |
 
 ---
 
@@ -177,7 +192,7 @@
 
 | Filename | Dimensions | Ratio | Purpose | Type | Status | Generation Description |
 | -------- | --------- | ----- | ------- | ---- | ------ | --------------------- |
-| cover_bg.png | {canvas_info['dimensions']} | [ratio] | Cover background | [Background/Photography/Illustration/Diagram/Decorative] | [Pending/Existing/Placeholder] | [AI generation prompt] |
+| cover_bg.png | {canvas_info['dimensions']} | [ratio] | Cover background | [Background/Photography/Illustration/Diagram/Decorative/Icon] | [Pending/Existing/Placeholder] | [AI generation prompt] |
 
 **Status descriptions**:
 
@@ -192,6 +207,7 @@
 - **Illustration** - Flat design, vector style, cartoon, concept diagrams
 - **Diagram** - Flowcharts, architecture diagrams, concept maps
 - **Decorative** - Partial decorations, textures, borders, dividers
+- **Icon** - Single-concept functional icon (32–48px display), flat vector, monochrome
 
 ---
 

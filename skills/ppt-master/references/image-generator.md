@@ -51,7 +51,7 @@ Every image must be output in the following format:
 | Attribute | Value |
 | --------- | ----- |
 | Purpose   | {which page / what function} |
-| Type      | {Background / Illustration / Photography / Diagram / Decorative} |
+| Type      | {Background / Illustration / Photography / Diagram / Decorative / Icon} |
 | Dimensions | {width}x{height} ({aspect ratio}) |
 | Original description | {description provided by user in the list} |
 
@@ -119,6 +119,7 @@ Full directive: "color palette: deep navy blue (#1E3A5F), light gray (#F8F9FA), 
 3. Flat / illustration / cartoon style → **Illustration** (3.3)
 4. Process / architecture / relationships → **Diagram** (3.4)
 5. Partial decoration / texture → **Decorative Pattern** (3.5)
+6. Small functional concept markers (displayed at 32–48px) → **Icon** (3.6)
 
 ### 3.1 Background
 
@@ -194,6 +195,34 @@ Full directive: "color palette: deep navy blue (#1E3A5F), light gray (#F8F9FA), 
 **Template**: `{pattern type} decorative pattern, {style} style, {color scheme}, {background type} background, subtle and elegant, suitable for {purpose}`
 
 **Negative prompt**: `busy, cluttered, high contrast, distracting, photorealistic`
+
+### 3.6 Icon
+
+**Identifying characteristics**: Single-concept functional icons for card headers, comparison row labels, or pillar markers. Small visual elements (displayed at 32–48px in the presentation) that serve as semantic tags — NOT hero illustrations or full-scene artwork.
+
+| Key Point | Description |
+|-----------|-------------|
+| Single concept per icon | One icon = one idea (brain = cognition, gear = engineering, shield = security) |
+| Centered composition | Subject centered on canvas, no off-center cropping |
+| Flat vector style | `flat vector icon`, `minimalist line-art`, `clean geometric` — NOT photorealistic |
+| Monochrome or 2-tone | Use ONE color from brand palette + optional lighter tint for depth. Multi-color icons break visual restraint |
+| White/transparent background | `white background` or `transparent background, isolated object` |
+| High resolution for scaling | Generate at 512×512 minimum; will be displayed at 32–48px but needs to stay crisp |
+| Uniform stroke weight | `consistent line weight`, `uniform stroke` — all icons in a batch must feel like one family |
+
+**Batch consistency technique**: When generating multiple icons for the same project, include a **style anchor** — a fixed style clause appended to every icon prompt verbatim. Example:
+
+> Style anchor: `flat vector icon, single-weight line-art, monochrome dark blue (#1E3A5F), white background, minimal detail, corporate infographic style, consistent with other icons in this set`
+
+Every icon prompt in the batch **MUST** end with the same style anchor to ensure visual family cohesion.
+
+**Template**: `{concept} icon, flat vector illustration, minimalist design, single object centered, {color directive} monochrome, white background, clean lines, uniform stroke weight, professional infographic icon, {style anchor}`
+
+**Negative prompt**: `text, labels, words, multiple objects, complex scene, photorealistic, 3D render, gradient background, colorful, busy details, watermark, human face`
+
+**Naming convention**: `icon_{concept}.png` (e.g., `icon_brain.png`, `icon_gear_wrench.png`, `icon_code_api.png`)
+
+**Recommended dimensions**: 512×512 (1:1) — square format ensures consistent sizing when embedded in SVG at 32–48px
 
 ---
 
@@ -358,6 +387,7 @@ Abstract futuristic background with flowing digital waves...
 | Illustration | `realistic, photography, 3D render, complex textures, watermark` |
 | Diagram | `cluttered, messy, overlapping elements, dark background, realistic` |
 | Decorative pattern | `busy, cluttered, high contrast, distracting, photorealistic` |
+| Icon | `text, labels, words, multiple objects, complex scene, photorealistic, 3D render, gradient background, colorful, busy details, watermark, human face` |
 
 ### Universal Negative Prompts
 
@@ -377,6 +407,7 @@ Abstract futuristic background with flowing digital waves...
 | Team introduction page | Team collaboration scene illustration (flat style) |
 | Data display page | Clean geometric pattern or solid color background |
 | Product showcase | Product photography style, white or gradient background |
+| Functional icon | Flat vector icon, monochrome brand color, single concept centered, white background, 512×512 |
 
 ### When Images Are Unsatisfactory
 

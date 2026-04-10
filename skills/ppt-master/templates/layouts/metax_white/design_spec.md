@@ -137,8 +137,39 @@
 | Content block gap | 32px |
 | Card padding   | 24px   |
 | Card border radius | 8px |
-| Icon-to-text gap | 12px |
+| Icon-to-text gap (horizontal) | 12px |
+| Icon-to-title gap (vertical, inside card) | 12px |
+| Minimum icon-to-icon distance | ≥ 1.5× icon width |
 | Footer margin from bottom | 14px |
+
+---
+
+## VII-b. Icon System
+
+### Icon Design Intent
+
+| Property | Value |
+| -------- | ----- |
+| **Design approach** | Icon-as-Label — functional semantic tags, subordinate to text |
+| **Recommended source** | B: AI-generated (primary) + C: Built-in `chunk` library (fallback for generic concepts) |
+| **Style anchor** (for AI-generated) | `flat vector icon, monochrome deep purple (#660874), single-weight line-art, white background, minimal detail, clean corporate infographic style, consistent with other icons in this set` |
+
+### Icon Sizing Tiers (MetaX-adapted)
+
+| Tier | Size | Use Case |
+| ---- | ---- | -------- |
+| Primary | 44×44 px | Card header icon (cards are 1094px content width ÷ 3 ≈ 348px per card — 44px fits better than 48px) |
+| Secondary | 32×32 px | List item prefix, comparison row label |
+| Tertiary | 24×24 px | Inline accent, metadata indicator |
+
+### Icon Color Rules (MetaX palette)
+
+| Context | Color | Notes |
+| ------- | ----- | ----- |
+| Default (on white bg) | `#000000` | Matches MetaX body text |
+| Emphasis | `#660874` | Brand Purple — use for the single most important icon per page |
+| On dark background | `#FFFFFF` | White icon on purple/dark card |
+| Teal accent (data pages) | `#1E8E94` | Optional — for data-visualization related icons only |
 
 ---
 
