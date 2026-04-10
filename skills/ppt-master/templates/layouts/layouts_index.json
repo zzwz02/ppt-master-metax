@@ -1,16 +1,16 @@
 {
   "meta": {
-    "total": 20,
+    "total": 21,
     "defaultViewBox": "0 0 1280 720",
     "formats": ["ppt169"],
     "standardFiles": ["design_spec.md", "01_cover.svg", "02_toc.svg", "02_chapter.svg", "03_content.svg", "04_ending.svg"],
     "standardPageTypes": ["cover", "toc", "chapter", "content", "ending"],
-    "updated": "2026-04-09"
+    "updated": "2026-04-10"
   },
   "categories": {
     "brand": {
       "label": "Brand Style Templates",
-      "layouts": ["google_style", "mckinsey", "anthropic", "中汽研_常规", "中汽研_商务", "中汽研_现代", "中国电建_常规", "中国电建_现代", "招商银行"]
+      "layouts": ["google_style", "mckinsey", "anthropic", "metax_white", "中汽研_常规", "中汽研_商务", "中汽研_现代", "中国电建_常规", "中国电建_现代", "招商银行"]
     },
     "general": {
       "label": "General Style Templates",
@@ -33,7 +33,8 @@
     "strategy": ["exhibit", "mckinsey"],
     "board": ["exhibit", "mckinsey", "招商银行"],
     "general_business": ["科技蓝商务", "smart_red", "exhibit"],
-    "technology": ["anthropic", "google_style", "smart_red", "ai_ops"],
+    "technology": ["anthropic", "google_style", "smart_red", "ai_ops", "metax_white"],
+    "semiconductor": ["metax_white"],
     "government": ["government_red", "government_blue", "ai_ops"],
     "academic": ["academic_defense", "重庆大学"],
     "medical": ["medical_university"],
@@ -93,6 +94,14 @@
       "tone": "Authoritative, solemn, professional, modernized government style",
       "themeMode": "Light theme (white background + government red/blue accents)",
       "keywords": ["Government affairs", "Party building", "Government red", "Authoritative"]
+    },
+    "metax_white": {
+      "label": "MetaX Standard White Template",
+      "summary": "A premium semiconductor brand template for MetaX product launches, technology presentations, investor roadshows, and corporate communications",
+      "tone": "Tech-forward, professional, premium semiconductor industry style",
+      "themeMode": "Light theme (white background + purple accent + green highlight)",
+      "assets": ["metax_logo_cover.png", "logo_header.png", "logo_header_small.png", "cover_bg.jpeg", "circuit_board_bg.png", "purple_chevron.png"],
+      "keywords": ["MetaX", "Semiconductor", "Technology", "Brand", "Investor relations"]
     },
     "mckinsey": {
       "label": "McKinsey Style Template",

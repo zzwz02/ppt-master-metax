@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720">
+    <!-- Template: Ending Page - MetaX Standard White -->
+
+    <!-- Full-bleed background image (same as cover) -->
+    <image href="cover_bg.jpeg" x="0" y="0" width="1280" height="720" preserveAspectRatio="xMidYMid slice"/>
+
+    <!-- MetaX Logo (top-left) -->
+    <image href="metax_logo_cover.png" x="85" y="37" width="176" height="80" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Stock code -->
+    <text x="90" y="142" font-family="Arial, sans-serif" font-size="14" fill="#FFFFFF" fill-opacity="0.85">
+        股票代码: 688802.SH
+    </text>
+
+    <!-- Thank-you message -->
+    <text x="640" y="340" text-anchor="middle" font-family="Source Han Sans CN, 思源黑体 CN Bold, 黑体, Arial, sans-serif" font-size="48" font-weight="bold" fill="#FFFFFF">
+        {{THANK_YOU}}
+    </text>
+
+    <!-- Purple accent bar -->
+    <rect x="531" y="370" width="218" height="11" fill="#660874" rx="2"/>
+
+    <!-- Contact info -->
+    <text x="640" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#FFFFFF" fill-opacity="0.8">
+        {{CONTACT_INFO}}
+    </text>
+
+</svg>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720">
+    <!-- Template: Chapter Divider Page - MetaX Standard White -->
+
+    <defs>
+        <linearGradient id="chapterConnector" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#06DEB7"/>
+            <stop offset="100%" style="stop-color:#660773"/>
+        </linearGradient>
+    </defs>
+
+    <!-- White background -->
+    <rect width="1280" height="720" fill="#FFFFFF"/>
+
+    <!-- Circuit board decorative background -->
+    <image href="circuit_board_bg.png" x="0" y="0" width="640" height="720" preserveAspectRatio="xMidYMid slice"/>
+    <!-- Overlay to reduce background visibility -->
+    <rect x="0" y="0" width="640" height="720" fill="#FFFFFF" fill-opacity="0.85"/>
+
+    <!-- MetaX Logo (top-right) -->
+    <image href="logo_header_small.png" x="1075" y="52" width="157" height="38" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Left vertical purple accent bar -->
+    <rect x="560" y="200" width="6" height="200" fill="#660874" rx="3"/>
+
+    <!-- Chapter number -->
+    <text x="620" y="310" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#660874" letter-spacing="2">
+        CHAPTER {{CHAPTER_NUM}}
+    </text>
+
+    <!-- Chapter title -->
+    <text x="620" y="370" font-family="Source Han Sans CN, 思源黑体 CN Bold, Arial, sans-serif" font-size="36" font-weight="bold" fill="#000000">
+        {{CHAPTER_TITLE}}
+    </text>
+
+    <!-- Decorative connector line below title -->
+    <rect x="620" y="400" width="500" height="3" fill="url(#chapterConnector)" rx="1.5"/>
+
+    <!-- Footer: Confidential notice -->
+    <text x="13" y="700" font-family="Arial, sans-serif" font-size="12" fill="#898989">
+        | 沐曦内部资料 | MetaX Confidential | All Rights Reserved |
+    </text>
+
+    <!-- Footer: Page number -->
+    <text x="1240" y="700" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#898989">
+        {{PAGE_NUM}}
+    </text>
+
+</svg>
