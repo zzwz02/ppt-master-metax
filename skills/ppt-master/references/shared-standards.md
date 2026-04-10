@@ -37,6 +37,28 @@ The following features are **absolutely forbidden** when generating SVGs — PPT
 
 **Mnemonic**: PPT does not recognize rgba, group opacity, image opacity, or markers.
 
+### Triangle Arrow Direction Reference (`<polygon>`)
+
+When drawing flow arrows with `<polygon>`, the **apex (the single point)** determines where the arrow **points to**. A common mistake is swapping apex and base, causing the arrow to face the opposite direction.
+
+| Direction | Correct `points` Pattern | Visual |
+|-----------|--------------------------|--------|
+| → Right   | `points="Xleft,Ytop Xleft,Ybot Xright,Ymid"` | ▶ |
+| ← Left    | `points="Xright,Ytop Xright,Ybot Xleft,Ymid"` | ◀ |
+| ↓ Down    | `points="Xleft,Ytop Xright,Ytop Xmid,Ybot"` | ▼ |
+| ↑ Up      | `points="Xleft,Ybot Xright,Ybot Xmid,Ytop"` | ▲ |
+
+**Rule**: The apex (the single x or y value that appears only once) is where the arrow **points to**. The two base points share the same x (for horizontal arrows) or same y (for vertical arrows).
+
+**Example — right-pointing flow arrow** (gap between two boxes at x=400 and x=420):
+```xml
+<!-- ✅ CORRECT: apex at x=420 (right), base at x=400 (left) → points RIGHT -->
+<polygon points="400,237 400,247 420,242" fill="#660874"/>
+
+<!-- ❌ WRONG: apex at x=400 (left), base at x=420 (right) → points LEFT -->
+<polygon points="400,242 420,237 420,247" fill="#660874"/>
+```
+
 ---
 
 ## 3. Canvas Format Quick Reference

@@ -181,6 +181,7 @@
 4. Forbidden: `textPath`, `animate*`, `script`, `marker-end`
 5. Inline styles only, no external CSS
 6. No `<g opacity>` — set opacity on each child individually
+7. Triangle flow arrows: use `<polygon>` with apex point at the **destination** side (e.g. right-pointing ▶: `points="Xleft,Ytop Xleft,Ybot Xright,Ymid"`) — see shared-standards.md §2
 
 ---
 
