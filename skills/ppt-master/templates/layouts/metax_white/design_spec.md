@@ -119,6 +119,29 @@
 - Content area placeholder
 - Footer with confidential notice and page number
 
+### 5. Disclaimer Page (`05_disclaimer.svg`) — ⚠️ MANDATORY
+
+> **This page is MANDATORY.** Every presentation using this template MUST include a Disclaimer page as the **second-to-last page** (immediately before the Ending page). The Strategist MUST add it to the Content Outline (Section IX). The Executor MUST inherit the full page from the template SVG without modifying any text content.
+
+- Uses Content Page layout (accent bar + connector line + logo + footer)
+- Page title: `DISCLAIMER` (32px bold)
+- Content area: single text block, no cards, no icons, no charts
+- Body text: **fixed content — do NOT modify** (20px, `#000000`, line-height ~28px)
+- Text block position: x=40, y=176, width=1208
+- The fixed body text is:
+
+```
+This presentation may contain privileged and confidential information and is intended only for MetaX Integrated Circuits (Shanghai) Co., Ltd. and/or its affiliates (hereinafter collectively referred to as "MetaX").  The information presented in this presentation should be kept strictly confidential and should not be allowed to make available to others without written consent from MetaX.
+
+The information presented in this presentation is for informational purposes only and may contain technical inaccuracies, omissions and typographical errors.  MetaX makes no representation or warranty of any kind, express or implied, regarding the reliability, availability or completeness of any information on the Slides.
+
+MetaX is the owner of the presentation and all portions thereof.  Except as expressly provided, you are prohibited from copying, modifying, distributing, displaying or transmitting any of the contents of the Slides for any purposes.
+
+MetaX, 沐曦, the MetaX logo and combinations thereof are trademarks of MetaX. Other product and company names used in this presentation are for identification purposes only and may be trademarks or trade names of their respective owners.
+
+http://www.metax-tech.com/
+```
+
 ### 4. Ending Page (`04_ending.svg`)
 - Full-bleed background image (same as cover)
 - MetaX logo with stock code at top-left
@@ -200,6 +223,8 @@
 | `{{PAGE_NUM}}`       | Page number                    | Content/Ending |
 | `{{THANK_YOU}}`      | Thank-you message              | Ending    |
 | `{{CONTACT_INFO}}`   | Contact information            | Ending    |
+
+> **Note**: The Disclaimer page (`05_disclaimer.svg`) contains fixed text and uses no placeholders. Its content must not be modified.
 
 ---
 

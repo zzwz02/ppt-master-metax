@@ -14,6 +14,7 @@ If template files exist in the project's `templates/` directory, the template st
 | Chapter | `02_chapter.svg` | Inherit numbering style, title position, decorative elements |
 | Content | `03_content.svg` | Inherit header/footer styles; **content area may be freely laid out** |
 | Ending | `04_ending.svg` | Inherit background, thank-you message position, contact info layout |
+| Disclaimer | `05_disclaimer.svg` | **MANDATORY if template provides it**: Inherit the **entire page** including all fixed text content verbatim; do NOT modify any text |
 | TOC | `02_toc.svg` | **Optional**: Inherit TOC title, list styles |
 
 ### Page-Template Mapping Declaration (Required Output)

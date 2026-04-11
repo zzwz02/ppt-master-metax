@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720">
+    <!-- Template: Disclaimer Page - MetaX Standard White -->
+    <!-- ⚠️ MANDATORY page: must appear as second-to-last page (before Ending) -->
+    <!-- ⚠️ Fixed content: do NOT modify any text on this page -->
+
+    <defs>
+        <linearGradient id="topBarGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#660874"/>
+            <stop offset="100%" style="stop-color:#51318E"/>
+        </linearGradient>
+    </defs>
+
+    <!-- White background -->
+    <rect width="1280" height="720" fill="#FFFFFF"/>
+
+    <!-- Top accent bar (purple gradient) -->
+    <rect x="0" y="83" width="351" height="6" fill="url(#topBarGradient)"/>
+
+    <!-- Top connector line -->
+    <line x1="351" y1="86" x2="1100" y2="86" stroke="#660874" stroke-width="1"/>
+
+    <!-- MetaX Logo (top-right) -->
+    <image href="logo_header.png" x="1103" y="49" width="117" height="28" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Page title -->
+    <text x="35" y="60" font-family="Source Han Sans CN, 思源黑体 CN Bold, Arial, sans-serif" font-size="32" font-weight="bold" fill="#000000">
+        DISCLAIMER
+    </text>
+
+    <!-- Disclaimer body text — FIXED CONTENT, DO NOT MODIFY -->
+
+    <!-- Paragraph 1 -->
+    <text x="40" y="176" font-family="Arial, sans-serif" font-size="20" fill="#000000">
+        <tspan x="40" dy="0">This presentation may contain privileged and confidential information and is intended only for MetaX Integrated Circuits</tspan>
+        <tspan x="40" dy="28">(Shanghai) Co., Ltd. and/or its affiliates (hereinafter collectively referred to as "MetaX").  The information presented in this</tspan>
+        <tspan x="40" dy="28">presentation should be kept strictly confidential and should not be allowed to make available to others without written</tspan>
+        <tspan x="40" dy="28">consent from MetaX.</tspan>
+    </text>
+
+    <!-- Paragraph 2 -->
+    <text x="40" y="300" font-family="Arial, sans-serif" font-size="20" fill="#000000">
+        <tspan x="40" dy="0">The information presented in this presentation is for informational purposes only and may contain technical inaccuracies,</tspan>
+        <tspan x="40" dy="28">omissions and typographical errors.  MetaX makes no representation or warranty of any kind, express or implied, regarding</tspan>
+        <tspan x="40" dy="28">the reliability, availability or completeness of any information on the Slides.</tspan>
+    </text>
+
+    <!-- Paragraph 3 -->
+    <text x="40" y="400" font-family="Arial, sans-serif" font-size="20" fill="#000000">
+        <tspan x="40" dy="0">MetaX is the owner of the presentation and all portions thereof.  Except as expressly provided, you are prohibited from</tspan>
+        <tspan x="40" dy="28">copying, modifying, distributing, displaying or transmitting any of the contents of the Slides for any purposes.</tspan>
+    </text>
+
+    <!-- Paragraph 4 -->
+    <text x="40" y="480" font-family="Arial, sans-serif" font-size="20" fill="#000000">
+        <tspan x="40" dy="0">MetaX, 沐曦, the MetaX logo and combinations thereof are trademarks of MetaX. Other product and company names used in</tspan>
+        <tspan x="40" dy="28">this presentation are for identification purposes only and may be trademarks or trade names of their respective owners.</tspan>
+    </text>
+
+    <!-- URL -->
+    <text x="40" y="560" font-family="Arial, sans-serif" font-size="20" fill="#000000">
+        http://www.metax-tech.com/
+    </text>
+
+    <!-- Footer: Confidential notice -->
+    <text x="13" y="700" font-family="Arial, sans-serif" font-size="12" fill="#898989">
+        | 沐曦内部资料 | MetaX Confidential | All Rights Reserved |
+    </text>
+
+    <!-- Footer: Page number -->
+    <text x="1240" y="700" text-anchor="end" font-family="Arial, sans-serif" font-size="12" fill="#898989">
+        {{PAGE_NUM}}
+    </text>
+
+</svg>

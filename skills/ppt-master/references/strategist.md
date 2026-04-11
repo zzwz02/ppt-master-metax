@@ -381,8 +381,9 @@ The Strategist should make professional judgments on the template basis generate
 
 **Generation steps**:
 1. Read reference template: `templates/design_spec_reference.md`
-2. Generate complete spec from scratch based on analysis
-3. Save to: `projects/<project_name>.../design_spec.md`
+2. If a brand template was selected (template files exist in `templates/`), read the template's own `templates/design_spec.md` and check for any page types marked **⚠️ MANDATORY**. All mandatory pages must be included in the Content Outline (Section IX) at their specified position (e.g., "second-to-last page"). If no page types are marked MANDATORY, no additional pages are required.
+3. Generate complete spec from scratch based on analysis
+4. Save to: `projects/<project_name>.../design_spec.md`
 
 ---
 
