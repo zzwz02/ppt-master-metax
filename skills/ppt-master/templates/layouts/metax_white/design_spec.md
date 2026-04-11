@@ -71,9 +71,11 @@
 | H1    | Cover main title   | 59        | Bold    |
 | H2    | Page heading       | 43        | Bold    |
 | H3    | Section title      | 32        | Bold    |
-| P     | Body content       | 24        | Light/Regular |
+| P     | Body content       | 18-24     | Light/Regular |
 | Sub1  | Secondary content  | 21        | Light   |
 | Sub2  | Annotations        | 19        | Light   |
+
+> **Adaptive sizing**: P (body) defaults to 24px but may be reduced to 18px when a page contains both images and dense text. See §V-b for rules.
 | Micro | Page numbers       | 14        | Regular |
 
 ---
@@ -91,6 +93,46 @@
 | **Content Area** | x=88, y=113, w=1094, h=536 | Main content area |
 | **Footer Left** | x=13, y=686, w=428, h=24 | Confidential notice, `#898989` |
 | **Footer Right** | x=1125, y=686, w=134, h=26 | Page number, `#898989` |
+
+---
+
+## V-b. Content Density & Space Utilization
+
+> These rules ensure every page feels content-rich and professionally filled, without crossing into the telecom-style "high-information-density" territory (see `ai_ops` template for that). The visual language and margins of metax_white remain unchanged.
+
+### 1. Image Sizing Rule
+
+When a content page uses a **text + image split layout**, the image area must not exceed **1/2 of the corresponding text area**.
+
+| Layout | Content area width | Max image width | Min text width |
+| ------ | ------------------ | --------------- | -------------- |
+| Left-right split | 1094px (x: 88-1182) | ~360px | ~700px |
+| Top-bottom split | 1094px | Full width, but image height ≤ 1/2 of text block height | — |
+
+- The image serves as a **visual supplement** to the text, not the focal point.
+- If multiple images appear on one page, their **combined area** must still respect the 1/2 constraint.
+
+### 2. Page Fill Principle
+
+Content must fill the page. Bottom whitespace (between the lowest content element and the footer at y=686) should not exceed **~60px**.
+
+- If the bottom of the page is visibly empty, the Executor must **add information**: extra data points, supplementary cards, deeper analysis, or supporting quotes.
+- Cover, Chapter divider, Disclaimer, and Ending pages are **exempt** from this rule.
+
+### 3. Adaptive Font Sizing
+
+When a single page carries both an image and substantial text, the body font size (P level) may be **reduced from 24px down to 18px** to fit more content.
+
+| Condition | Body font size | Notes |
+| --------- | -------------- | ----- |
+| Text-only page, low density | 24px | Default |
+| Text + image, moderate density | 21px | Comfortable reading |
+| Text + image, high density | 18px | Minimum for body text |
+| Annotations / footnotes | 14px | Absolute minimum (readability floor) |
+
+- **Never go below 14px** for any visible text (excluding page numbers at 12px Micro level).
+- H2 (page heading) and H3 (section title) sizes remain fixed regardless of density.
+- When font size is reduced, line spacing should stay at ≥ 1.3× font size for readability.
 
 ---
 
@@ -164,6 +206,7 @@ http://www.metax-tech.com/
 | Icon-to-title gap (vertical, inside card) | 12px |
 | Minimum icon-to-icon distance | ≥ 1.5× icon width |
 | Footer margin from bottom | 14px |
+| Minimum content fill ratio | ≥ 90% of content area height (content bottom ≥ y=620) |
 
 ---
 
