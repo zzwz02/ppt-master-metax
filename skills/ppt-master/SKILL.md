@@ -109,11 +109,11 @@ Import source content (choose based on the situation):
 
 | Situation | Action |
 |-----------|--------|
-| Has source files (PDF/MD/etc.) | `python3 ${SKILL_DIR}/scripts/project_manager.py import-sources <project_path> <source_files...> --move` |
+| Has source files (PDF/MD/etc.) | `python3 ${SKILL_DIR}/scripts/project_manager.py import-sources <project_path> <source_files...> --copy` |
 | User provided text directly in conversation | No import needed — content is already in conversation context; subsequent steps can reference it directly |
 
-> ⚠️ **MUST use `--move`**: All source files (original PDF / MD / images) MUST be **moved** (not copied) into `sources/` for archiving.
-> - Markdown files generated in Step 1, original PDFs, original MDs — **all** must be moved into the project via `import-sources --move`
+> ⚠️ **MUST use `--copy`**: All source files (original PDF / MD / images) MUST be **copied** (not moved) into `sources/` for archiving.
+> - Markdown files generated in Step 1, original PDFs, original MDs — **all** must be copied into the project via `import-sources --copy`
 > - Intermediate artifacts (e.g., `_files/` directories) are handled automatically by `import-sources`
 > - After execution, source files no longer exist at their original location
 

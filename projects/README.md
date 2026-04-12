@@ -45,4 +45,4 @@ Projects can remain at different stages and do not necessarily have all artifact
 
 - Contents under this directory are excluded by `.gitignore`
 - Completed projects can be moved to the `examples/` directory for sharing
-- Files outside the workspace are copied by default; files within the workspace are moved directly to the project's `sources/`
+- Files outside the workspace are copied by default; files within the workspace are copied directly to the project's `sources/`

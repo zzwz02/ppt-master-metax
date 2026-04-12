@@ -15,8 +15,8 @@ python3 scripts/project_manager.py info <project_path>
 
 Notes:
 - Files outside the workspace are copied into `sources/` by default
-- With `--move`, files outside the workspace are moved into `sources/`
-- Files already inside the workspace are moved directly
+- With `--copy`, files outside the workspace are copied into `sources/`
+- Files already inside the workspace are copied directly
 
 Common formats:
 - `ppt169`

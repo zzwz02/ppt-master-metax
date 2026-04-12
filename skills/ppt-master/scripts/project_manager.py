@@ -402,7 +402,7 @@ class ProjectManager:
                 summary["skipped"].append(f"{item}: directories are not supported")
                 continue
 
-            effective_move = move or is_within_path(source_path, REPO_ROOT)
+            effective_move = move and not is_within_path(source_path, REPO_ROOT)
             suffix = source_path.suffix.lower()
 
             if suffix in {".md", ".markdown"}:
@@ -550,6 +550,8 @@ def parse_import_args(argv: list[str]) -> tuple[str, list[str], bool]:
     for arg in argv[3:]:
         if arg == "--move":
             move = True
+        elif arg == "--copy":
+            move = False
         else:
             sources.append(arg)
 

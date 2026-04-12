@@ -19,7 +19,7 @@ node skills/ppt-master/scripts/web_to_md.cjs <URL>
 
 # Project management
 python3 skills/ppt-master/scripts/project_manager.py init <project_name> --format ppt169
-python3 skills/ppt-master/scripts/project_manager.py import-sources <project_path> <source_files_or_URLs...> --move
+python3 skills/ppt-master/scripts/project_manager.py import-sources <project_path> <source_files_or_URLs...> --copy
 python3 skills/ppt-master/scripts/project_manager.py validate <project_path>
 
 # Image tools
