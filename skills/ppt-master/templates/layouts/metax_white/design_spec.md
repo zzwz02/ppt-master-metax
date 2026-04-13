@@ -112,14 +112,41 @@ When a content page uses a **text + image split layout**, the image area must no
 - The image serves as a **visual supplement** to the text, not the focal point.
 - If multiple images appear on one page, their **combined area** must still respect the 1/2 constraint.
 
-### 2. Page Fill Principle
+### 2. Page Fill Principle (Page Fill Rule)
 
-Content must fill the page. Bottom whitespace (between the lowest content element and the footer at y=686) should not exceed **~60px**.
+Content must fill the page. This template enforces a **Page Fill Rule** with the following parameters:
 
+| Parameter | Value | Description |
+| --------- | ----- | ----------- |
+| `content_top_y` | 113 | Content area top boundary |
+| `footer_y` | 686 | Footer y position |
+| `target_bottom_y` | 620 | Minimum content bottom y (≥ 90% fill) |
+| `max_gap` | 60px | Maximum allowed gap between lowest content element and footer |
+
+- If `footer_y − lowest_content_y > 60px`, the page **fails** the fill check and the Executor must add content before proceeding.
 - If the bottom of the page is visibly empty, the Executor must **add information**: extra data points, supplementary cards, deeper analysis, or supporting quotes.
 - Cover, Chapter divider, Disclaimer, and Ending pages are **exempt** from this rule.
 
-### 3. Adaptive Font Sizing
+> This rule triggers the **Vertical Fill Budget** (pre-generation) and **Post-generation Self-check** steps defined in `executor-base.md`.
+
+### 3. Image-Frame Fit Rule
+
+When a content page contains images, the image frame must be sized to **match the image's native aspect ratio**. Visible padding / letterboxing inside a frame is **forbidden**. This template enforces an **Image-Frame Fit Rule** with the following parameters:
+
+| Parameter | Value | Description |
+| --------- | ----- | ----------- |
+| `max_image_width` | 360px | Left-right split: max image frame width |
+| `content_area_height` | 536px | Available column height (y: 113–649) |
+| `min_column_fill` | 80% | Single-image column must fill ≥ 80% of column height |
+| `anti_waste_remedy` | companion content | Add data callouts, key metrics, or mini-summary cards below the image |
+
+- The frame `<rect>` and `<image>` element must use the **same** W×H, calculated from the image's native aspect ratio: `H = W × (img_height / img_width)`.
+- If the aspect-ratio-fitted image frame alone fills < 80% of the column height, the Executor **must** add companion content (data callouts, key metrics card, source annotations, or mini-summary) until the column reaches ≥ 80% fill.
+- Using a fixed/hardcoded frame size for all images regardless of aspect ratio is **prohibited**.
+
+> This rule triggers the **Image-Frame Fit Checklist** steps defined in `executor-base.md`.
+
+### 4. Adaptive Font Sizing
 
 When a single page carries both an image and substantial text, the body font size (P level) may be **reduced from 24px down to 18px** to fit more content.
 
@@ -141,7 +168,6 @@ When a single page carries both an image and substantial text, the body font siz
 ### 1. Cover Page (`01_cover.svg`)
 - Full-bleed background image (`cover_bg.jpeg`, sci-fi/tech themed)
 - MetaX logo (`metax_logo_cover.png`, 176x80px) at top-left (x=85, y=37)
-- Stock code: `股票代码: 688802.SH` below logo, white text
 - Main title: 59px bold, white, at (78, 300)
 - Purple accent bar (x=90, y=404, w=218, h=11, `#660874`)
 - Subtitle: white text below accent bar
@@ -186,7 +212,7 @@ http://www.metax-tech.com/
 
 ### 4. Ending Page (`04_ending.svg`)
 - Full-bleed background image (same as cover)
-- MetaX logo with stock code at top-left
+- MetaX logo (`metax_logo_cover.png`, 176x80px) at top-left (x=85, y=37)
 - `感谢观看！` centered, 59px bold, white
 - Purple accent bar below
 - No footer

@@ -218,6 +218,17 @@ Selection principle: Font size is based on **content density**, not design style
 
 Core logic: The layout container's aspect ratio must closely match the image's original ratio. Never force a wide image into a square container or a portrait image into a narrow horizontal strip.
 
+#### Template-specific image sizing constraints
+
+After selecting the layout type, the Strategist **MUST** check the template's `design_spec.md` (at `<project_path>/templates/design_spec.md`) for any **Image Sizing Rule** (typically in §V-b or similar section). If such a rule exists:
+
+1. Apply the template constraint as an **upper bound** — it overrides the default dimension formulas in `image-layout-spec.md`
+2. Calculate and write the **max image width/height** into the Content Outline for each image-bearing page
+3. Example: if a template limits image width to ≤ 1/2 of text area (≈ 360px max for a 1094px content area in left-right split), state `max_image_width: 360px` in the outline entry
+4. When multiple images appear on one page, their **combined area** must also respect the constraint
+
+This ensures the Executor has an explicit numeric constraint before SVG generation.
+
 > **Pipeline handoff**: When C) AI generation is selected, after outputting the design spec, prompt the user to invoke Image_Generator. Once images are collected in `images/`, proceed to Executor.
 
 ### Chart Reference (Non-blocking — Strategist recommends, no user confirmation needed)
