@@ -54,55 +54,8 @@ Must output confirmation including: canvas dimensions, body font size, color sch
 - **Technical specifications**: See [shared-standards.md](shared-standards.md) for SVG technical constraints and PPT compatibility rules
 - **Visual depth**: Use filter shadows, glow effects, gradient fills, dashed strokes, and gradient overlays from shared-standards.md to create layered depth — flat pages without elevation or emphasis look unfinished
 
-### Template Override: Page Fill Rule
 
-Some templates define a **Page Fill Rule** in their `design_spec.md` (typically in §V-b "Page Fill Principle" or §VII "Minimum content fill ratio"). This rule specifies a maximum allowed bottom whitespace gap and/or a minimum content bottom y-coordinate.
-
-**When a template Page Fill Rule exists**, the Executor MUST perform the Vertical Fill Budget (pre-generation) and Post-generation Self-check (post-generation) described below. When no such rule exists in the template, these steps are optional.
-
-#### Pre-flight: Page Fill Rule detection
-
-Before generating the first content page, the Executor **MUST**:
-
-1. Read `<project_path>/templates/design_spec.md` and check for a **Page Fill Rule** (look for "Page Fill Principle", "Minimum content fill ratio", or "max bottom whitespace" in §V-b or §VII)
-2. If found, extract the key parameters:
-   - `footer_y` — footer y position
-   - `target_bottom_y` — minimum content bottom y (e.g., "content bottom ≥ y=620")
-   - `max_gap` — maximum allowed gap between lowest content and footer (e.g., 60px)
-3. If no Page Fill Rule exists, skip the Vertical Fill Budget and Post-generation Self-check steps below
-
-#### Vertical Fill Budget (Pre-generation Step)
-
-> Only applies when the template defines a Page Fill Rule. Cover, Chapter divider, Disclaimer, and Ending pages are exempt.
-
-Before coding each **content page** SVG, calculate a vertical fill budget:
-
-1. **Determine the available vertical space**: Use the template's `content_top_y` and `footer_y`. Compute: `available_height = footer_y − content_top_y`. Use the template's `target_bottom_y` as the fill target.
-
-2. **Sum planned block heights**: For each content block planned for this page (cards, stat rows, model rows, image columns, banners, etc.), estimate its height including internal padding and inter-block gaps. Compute: `planned_bottom_y = content_top_y + Σ(block_height + gap)`.
-
-3. **Compare and adjust**: If `planned_bottom_y < target_bottom_y`, the page will have excessive bottom whitespace. Before generating SVG, adjust the plan:
-   - Increase card/block heights (add more detail lines, increase padding)
-   - Add supplementary content blocks (data strips, insight banners, supporting quotes, additional data points)
-   - Extend image column with a callout card or data summary below the image
-   - **Do NOT** simply increase inter-block gaps to fill space — add real content
-
-4. **Record the budget** as an SVG comment at the top of the file:
-   ```xml
-   <!-- Vertical fill: left bottom=674, right bottom=670 → gap to footer(686)=12px ✓ -->
-   ```
-
-#### Post-generation Self-check
-
-> Only applies when the template defines a Page Fill Rule. Cover, Chapter divider, Disclaimer, and Ending pages are exempt.
-
-After generating each **content page** SVG, verify page fill compliance:
-
-1. **Scan the SVG** for the lowest y-coordinate of any visible content element (excluding footer). Compute: `lowest_y = max(element_y + element_height)` across all content elements.
-2. **Check**: `footer_y − lowest_y ≤ max_gap`. If the gap exceeds the template's `max_gap`, the page **fails** the fill check.
-3. **If failed**: Immediately add content to the page — extra data points, supplementary cards, deeper analysis, supporting quotes, or data strips — until the gap passes. Do NOT proceed to the next page until the current page passes.
-
-> This check prevents the Executor from leaving 100–150px of dead whitespace at the bottom of content pages.
+Before generating each content page, read the project's `templates/design_spec.md` for any layout constraints (image sizing, page fill, frame fit) and enforce them. If a template defines stricter rules, those override the defaults below.
 
 ### SVG File Naming Convention
 
@@ -254,49 +207,8 @@ When the Design Spec includes a **VII. Chart Reference List**, read the referenc
 
 ### Pre-flight: Template image sizing validation
 
-Before coding any `<image>` element on a content page, the Executor **MUST**:
 
-1. Read `<project_path>/templates/design_spec.md` and check for an **Image Sizing Rule** (typically in §V-b)
-2. If the template specifies an image-to-text area constraint (e.g., "image area ≤ 1/2 of text area"):
-   - **Left-right split**: image width must not exceed the template's stated max (e.g., ~360px for a 1094px content area)
-   - **Top-bottom split**: image height must not exceed the template's stated max (e.g., ≤ 1/2 of text block height)
-   - **Multiple images on one page**: their combined area must still respect the constraint
-3. If the Design Specification's Content Outline includes an explicit `max_image_width` / `max_image_height`, use that value directly
-4. The image serves as a **visual supplement** to the text — text is the focal point
 
-> This check overrides `image-layout-spec.md` default formulas when the template imposes stricter limits.
-
-### Template Override: Image-Frame Fit Rule
-
-Some templates define an **Image-Frame Fit Rule** in their `design_spec.md` (typically in §V-b). This rule requires that image frames match each image's native aspect ratio — no letterboxing — and that single-image columns fill a minimum percentage of the available column height.
-
-**When a template Image-Frame Fit Rule exists**, the Executor MUST perform the Image-Frame Fit Checklist below for every content page that contains images. When no such rule exists in the template, these steps are optional (but `image-layout-spec.md` base rules still apply).
-
-#### Pre-flight: Image-Frame Fit Rule detection
-
-Before generating the first content page, the Executor **MUST**:
-
-1. Read `<project_path>/templates/design_spec.md` and check for an **Image-Frame Fit Rule** (look for "Image-Frame Fit Rule", "anti-letterboxing", or "min_column_fill" in §V-b)
-2. If found, extract the key parameters:
-   - `max_image_width` — maximum image frame width for left-right split
-   - `content_area_height` — available column height
-   - `min_column_fill` — minimum fill percentage for single-image columns (e.g., 80%)
-   - `anti_waste_remedy` — preferred remedy (companion content / stack images / change layout)
-3. If no Image-Frame Fit Rule exists, skip the checklist below
-
-#### Image-Frame Fit Checklist (Per image page)
-
-> Only applies when the template defines an Image-Frame Fit Rule. Cover, Chapter divider, Disclaimer, and Ending pages are exempt.
-
-Before generating each content page SVG that contains an image:
-
-| # | Check | Action |
-|---|-------|--------|
-| 1 | **Read image dimensions** | Look up the image's pixel W×H and ratio from the Design Spec image resource list. If missing, run `analyze_images.py` first. |
-| 2 | **Calculate frame H from ratio** | Given target frame width `W`, compute `H = W × (img_height / img_width)`. |
-| 3 | **Set `<rect>` and `<image>` to identical W×H** | Both the background `<rect>` and the `<image>` element must use the **exact same** width and height — no oversized container, no padding. |
-| 4 | **Cap check** | Verify: (a) frame dimensions respect the template Image Sizing Rule from §6 pre-flight, (b) frame bottom ≤ safe area bottom. If either fails, reduce `W` and recalculate `H`. |
-| 5 | **Anti-Waste check** | If the column contains only this one image, calculate: `(image_frame_H + caption + gaps) / content_area_height`. If < `min_column_fill`, **must** apply the template's `anti_waste_remedy` (e.g., add companion content — data callouts, key metrics card, mini-summary) until the fill target is met. |
 
 **Prohibited**: Using a fixed/hardcoded frame size for all images regardless of aspect ratio. Each image's frame must be individually calculated.
 

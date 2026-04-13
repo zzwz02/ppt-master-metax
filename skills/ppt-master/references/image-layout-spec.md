@@ -104,59 +104,12 @@ Switch to left-right: image 780x446 (left), text area 360x600 (right) → 7:3 le
 
 ---
 
-## Template Override: Image Sizing Rule
 
-The dimension formulas above calculate the **maximum possible** display area for the image. However, some templates impose stricter constraints in their `design_spec.md` (e.g., §V-b "Image Sizing Rule": image area ≤ 1/2 of text area).
-
-**When a template Image Sizing Rule exists, it OVERRIDES the formulas above.**
-
-The Executor must use `min(formula_result, template_max)` as the final image dimension.
-
-| Step | Action |
-|------|--------|
-| 1 | Calculate image dimensions using the formulas above |
-| 2 | Read `<project_path>/templates/design_spec.md` for Image Sizing Rule |
-| 3 | If template max is smaller, use template max instead |
+Template `design_spec.md` may impose stricter constraints (e.g., image sizing, frame fit, page fill) that override these defaults. Always check the template before applying the formulas above.
 
 ---
 
-## Template Override: Image-Frame Fit Rule (Anti-Letterboxing)
 
-Some templates define an **Image-Frame Fit Rule** in their `design_spec.md` (typically in §V-b). This rule requires that image frames match each image's native aspect ratio — no letterboxing — and that single-image columns fill a minimum percentage of the available column height.
-
-**When a template Image-Frame Fit Rule exists**, the Frame Sizing Workflow and Single-Image Column Anti-Waste Rule below become **mandatory**. When no such rule exists in the template, these steps are recommended best practices but not enforced.
-
-> The image frame (the `<rect>` + `<image>` container) must be sized to **match the actual image's aspect ratio**. Visible padding / letterboxing inside a frame is **forbidden**.
-
-### Frame Sizing Workflow
-
-Both Strategist and Executor must follow these steps:
-
-1. **Know the image dimensions before layout.** The Strategist must record each image's pixel width × height in the Design Spec image resource list. The Executor must read these dimensions before drawing the frame.
-2. **Calculate frame dimensions from the image's native aspect ratio.** Given a target width `W`, set frame height `H = W × (img_height / img_width)`. The frame `<rect>` and `<image>` element must use the **same** `W × H` — no oversized container.
-3. **Cap check.** After calculating `H`, verify: (a) the frame does not violate template-level image sizing constraints (e.g. §V-b), and (b) the frame bottom stays within the safe area. If either fails, reduce `W` until both pass.
-
-### Single-Image Column Anti-Waste Rule
-
-When a column (e.g. right side of a left-right split) contains **only one image**, the Strategist / Executor must ensure the column's total content fills ≥ the template's `min_column_fill` (default 80%) of the available column height. If the aspect-ratio-fitted image frame alone does not reach the target, apply one of these remedies:
-
-| Remedy | Description |
-| ------ | ----------- |
-| **A. Add companion content** | Place data callouts, key quotes, source annotations, or a mini-summary card above or below the image in the same column. |
-| **B. Stack multiple images** | If additional relevant images exist, stack 2–3 images vertically in the column (each fitted to its own aspect ratio, with 16px gap between frames). |
-| **C. Change layout** | Abandon left-right split; embed the image inline within the text flow (e.g. between cards), or use a bottom-strip layout with full-width image below the text block. |
-
-- Whichever remedy is chosen, the **combined content** in the column must reach ≥ 80% of the available column height.
-
-Example (metax_white, left-right split, content area = 1094px):
-- Formula says: image width = 680px (height-first fit for ratio 1.79)
-- Template says: max image width ≈ 360px (image ≤ 1/2 of text area)
-- **Final: image width = 360px**, text width ≈ 700px
-
-Example (metax_white, top-bottom split, content area height = 536px):
-- Formula says: image height = 400px
-- Template says: image height ≤ 1/2 of text block height
-- **Final: image height ≤ 178px** (text block ≈ 356px, image ≤ 178px)
 
 ---
 
