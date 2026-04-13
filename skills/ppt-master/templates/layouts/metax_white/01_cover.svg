@@ -15,11 +15,6 @@
     <!-- MetaX Logo (top-left) -->
     <image href="metax_logo_cover.png" x="85" y="37" width="176" height="80" preserveAspectRatio="xMidYMid meet"/>
 
-    <!-- Stock code -->
-    <text x="90" y="142" font-family="Arial, sans-serif" font-size="14" fill="#FFFFFF" fill-opacity="0.85">
-        股票代码: 688802.SH
-    </text>
-
     <!-- Main title -->
     <text x="78" y="300" font-family="Source Han Sans CN, 思源黑体 CN Bold, Arial, sans-serif" font-size="48" font-weight="bold" fill="#FFFFFF">
         {{TITLE}}
