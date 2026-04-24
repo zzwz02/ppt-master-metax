@@ -102,30 +102,19 @@
 
 ### 1. Image Sizing Rule
 
-When a content page uses a **text + image split layout**, the image area must not exceed **1/2 of the corresponding text area**.
+When a content page uses a **text + image split layout**, the image occupies **1/3 of the content dimension** and text occupies **2/3**.
 
-| Layout | Content area width | Max image width | Min text width |
-| ------ | ------------------ | --------------- | -------------- |
-| Left-right split | 1094px (x: 88-1182) | ~360px | ~700px |
-| Top-bottom split | 1094px | Full width, but image height ≤ 1/2 of text block height | — |
+| Layout | Image (MANDATORY) | Text |
+| ------ | ----- | ---- |
+| Left-right split | ≤ 360px wide (1/3 × 1080) | ≥ 720px wide (2/3 × 1080) |
+| Top-bottom split | ≤ 190px tall (1/3 × (680-113)) | ≥ 380px tall (2/3 × (680-113)) |
 
 - The image serves as a **visual supplement** to the text, not the focal point.
-- If multiple images appear on one page, their **combined area** must still respect the 1/2 constraint.
+- If multiple images appear on one page, their **combined area** must still respect the 1/3 constraint.
 
-### 2. Page Fill Principle (Page Fill Rule)
+### 2. Page Fill Principle
 
-Content must fill the page. This template enforces a **Page Fill Rule** with the following parameters:
-
-| Parameter | Value | Description |
-| --------- | ----- | ----------- |
-| `content_top_y` | 113 | Content area top boundary |
-| `footer_y` | 686 | Footer y position |
-| `target_bottom_y` | 620 | Minimum content bottom y (≥ 90% fill) |
-| `max_gap` | 60px | Maximum allowed gap between lowest content element and footer |
-
-- If `footer_y − lowest_content_y > 60px`, the page **fails** the fill check and the Executor must add content before proceeding.
-- If the bottom of the page is visibly empty, the Executor must **add information**: extra data points, supplementary cards, deeper analysis, or supporting quotes.
-- Cover, Chapter divider, Disclaimer, and Ending pages are **exempt** from this rule.
+Content must reach at least **y=620**, leaving ≤ 60px above the footer (y=686). Pages that fall short must add content — extra data points, supplementary cards, or deeper analysis. Cover, chapter divider, disclaimer, and ending pages are exempt.
 
 > This rule triggers the **Vertical Fill Budget** (pre-generation) and **Post-generation Self-check** steps defined in `executor-base.md`.
 
@@ -135,7 +124,7 @@ When a content page contains images, the image frame must be sized to **match th
 
 | Parameter | Value | Description |
 | --------- | ----- | ----------- |
-| `max_image_width` | 360px | Left-right split: max image frame width |
+| `max_image_width` | 360px | Left-right split: max image frame width (1/3 × 1080) |
 | `content_area_height` | 536px | Available column height (y: 113–649) |
 | `min_column_fill` | 80% | Single-image column must fill ≥ 80% of column height |
 | `anti_waste_remedy` | companion content | Add data callouts, key metrics, or mini-summary cards below the image |

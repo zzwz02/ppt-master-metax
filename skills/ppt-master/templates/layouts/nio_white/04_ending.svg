@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720">
+    <!-- Template: Ending / Thank You Slide - NIO Standard White -->
+
+    <!-- Full-bleed deep-navy background (matches cover) -->
+    <rect width="1280" height="720" fill="#00243B"/>
+
+    <!-- NIO logo (top-left, matches cover 38,32 native slot) -->
+    <image href="nio_logo.png" x="38" y="32" width="51" height="47" preserveAspectRatio="xMidYMid meet"/>
+
+    <!-- Thank-you message (top-left, 36px Light) -->
+    <text x="116" y="73" font-family="Blue Sky Standard Light, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="36" font-weight="300" fill="#FFFFFF">
+        {{THANK_YOU}}
+    </text>
+
+    <!-- Contact info -->
+    <text x="116" y="108" font-family="Blue Sky Standard Light, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="14" fill="#FFFFFF" fill-opacity="0.75">
+        {{CONTACT_INFO}}
+    </text>
+
+    <!-- Confidentiality tag, bottom-left (red alert) -->
+    <text x="41" y="676" font-family="Blue Sky Standard Regular, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="11" fill="#FF231E">
+        {{CONFIDENTIALITY}}
+    </text>
+
+    <!-- Legal disclaimer strip -->
+    <text x="41" y="693" font-family="Blue Sky Standard Light, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="8" fill="#FFFFFF" fill-opacity="0.85">
+        {{DISCLAIMER}}
+    </text>
+
+    <!-- "NIO Internal" bottom strip (signature teal terminal word) -->
+    <text x="1080" y="693" font-family="Blue Sky Standard Regular, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="11" fill="#FFFFFF">
+        <tspan>NIO </tspan><tspan fill="#00BEBE">Internal</tspan>
+    </text>
+
+</svg>

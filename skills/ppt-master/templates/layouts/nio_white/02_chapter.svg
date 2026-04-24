@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 720">
+    <!-- Template: Chapter / Section Divider - NIO Standard White -->
+
+    <!-- Full-bleed deep-navy background -->
+    <rect width="1280" height="720" fill="#00243B"/>
+
+    <!-- Signature large teal section number (centered) -->
+    <text x="640" y="302" text-anchor="middle" font-family="Blue Sky Standard Light, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="27" font-weight="300" fill="#00BEBE">
+        # {{CHAPTER_NUM}}
+    </text>
+
+    <!-- Section title (centered, 36px Light white) -->
+    <text x="640" y="356" text-anchor="middle" font-family="Blue Sky Standard Light, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="36" font-weight="300" fill="#FFFFFF">
+        {{CHAPTER_TITLE}}
+    </text>
+
+    <!-- Footer left: NIO watermark (muted on navy) -->
+    <text x="40" y="691" font-family="Blue Sky Standard Regular, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="11" fill="#FFFFFF" fill-opacity="0.55">
+        <tspan>NIO · </tspan><tspan fill="#00BEBE" fill-opacity="0.9">{{FOOTER_LEFT}}</tspan>
+    </text>
+
+    <!-- Footer date -->
+    <text x="1069" y="691" font-family="Blue Sky Standard Regular, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="11" fill="#FFFFFF" fill-opacity="0.55">
+        {{DATE}}
+    </text>
+
+    <!-- Page number -->
+    <text x="1239" y="691" text-anchor="end" font-family="Blue Sky Standard Regular, Source Han Sans CN, PingFang SC, Arial, sans-serif" font-size="11" fill="#FFFFFF" fill-opacity="0.55">
+        {{PAGE_NUM}}
+    </text>
+
+</svg>
